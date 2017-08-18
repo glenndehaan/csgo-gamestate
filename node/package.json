@@ -1,0 +1,17 @@
+{
+  "name": "csgo-gamestate",
+  "version": "0.0.0",
+  "description": "NPM packages for csgo-gamestate",
+  "private": false,
+  "scripts": {
+    "server": "node server.js",
+    "dashboard": "node server-dashboard.js"
+  },
+  "author": "Glenn de Haan",
+  "license": "MIT",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.8.5",
+    "simple-node-logger": "^0.93.28"
+  }
+}
