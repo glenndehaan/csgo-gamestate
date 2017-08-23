@@ -29,6 +29,11 @@ let widgetLog = grid.set(8, 0, 4, 12, contrib.log, {
     selectedFg: "green",
     label: 'Logs'
 });
+let widgetRoundLog = grid.set(4, 0, 4, 9, contrib.log, {
+    fg: "green",
+    selectedFg: "green",
+    label: 'Round Logs'
+});
 let widgetPlayers =  grid.set(4, 9, 4, 3, contrib.table, {
     keys: true,
     fg: 'green',
@@ -169,6 +174,7 @@ function processRoundEnd(data) {
 
     log.info(`[ROUND_END] ${team_won} won by ${reason_won} (CT ${ct_score}-${t_score} T)`);
     widgetLog.log(`[ROUND_END] ${team_won} won by ${reason_won} (CT ${ct_score}-${t_score} T)`);
+    widgetRoundLog.log(`[ROUND_END] ${team_won} won by ${reason_won} (CT ${ct_score}-${t_score} T)`);
     screen.render();
 }
 
@@ -192,6 +198,7 @@ function processMapEnd(data) {
 
         log.info(`[MAP_END] ${data.map.name} over, ${winner}`);
         widgetLog.log(`[MAP_END] ${data.map.name} over, ${winner}`);
+        widgetRoundLog.log(`[MAP_END] ${data.map.name} over, ${winner}`);
         screen.render();
     }
 }
@@ -291,7 +298,7 @@ function processPlayerId(data) {
 
             widget_data.push(row);
         }
-        widgetPlayers.setData({headers: ['Name', 'ID'], data: widget_data});
+        widgetPlayers.setData({headers: ['Name', 'ID'], data: widget_data.reverse()});
         widgetPlayers.focus();
         screen.render();
     }
